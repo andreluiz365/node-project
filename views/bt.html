@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+        <main class="row content">
+        <div class="col-md-12">            
+
+<form action="/bootstrap" method="get">
+    <label class="form-group">Nome:<input type="text" class="form-control" name="name"></label>
+    <label class="form-group">Idade:<input type="tel" class="form-control" name="age"></label>
+    <input type="submit" value="Pesquisar" class="btn btn-primary">
+</form>
+            
+<h1>{{ title }}</h1>
+
+<table class="table table-hover table-bordered table-striped">
+<thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+        <th>actions</th>
+    </tr>
+</thead>
+<tbody>
+    {% for item in items %}
+    <tr data-id="{{ item._id }}">
+        <td>{{ item._id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.age }}</td>
+        <td><button class="btn btn-danger">remove</button></td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+</table>
+</div>
+</main>
+
+<script src="/js/jquery.js"></script>
+<script>
+$('table button.btn-danger').on('click', function(event){
+    event.stopPropagation()
+    var $tr = $(this).parents('tr')
+    var id = $tr.data('id')
+
+    $.ajax({
+        url: '/actresses' + id,
+        method: 'DELETE'
+    })
+    .then(function(){
+        $tr.remove
+    })
+})
+
+$('table body tr').on('click', function(){
+        var id = $(this).data('id')
+        $.ajax({
+            url: '/actresses/' + id
+        })
+        .then(function(data){
+            console.log(data)
+        })
+    })
+</script>
+
+</body>
+</html>

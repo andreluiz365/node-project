@@ -1,0 +1,27 @@
+{
+  "name": "locadora-porno",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/bin/www",
+    "test": "set NODE_ENV=test&& mocha test/*"
+  },
+  "keywords": [],
+  "author": "Andre Luiz Vianna <andreluizvianna@outlook.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.10",
+    "nunjucks": "^3.1.2",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.0.0",
+    "istanbul": "^0.4.5",
+    "jquery": "^3.3.1",
+    "mocha": "^5.0.4",
+    "supertest": "^3.0.0"
+  }
+}
